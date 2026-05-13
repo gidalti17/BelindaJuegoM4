@@ -19,7 +19,16 @@ body{
     min-height:100%;
 
     overflow-x:hidden;
-    overflow-y:auto;
+}
+
+/* ================= SCROLL SUAVE ================= */
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    -webkit-overflow-scrolling:touch;
 }
 
 /* ================= BODY ================= */
@@ -35,6 +44,7 @@ body{
 
     min-height:100vh;
 
+    overflow-x:hidden;
     overflow-y:auto;
 }
 
@@ -53,8 +63,6 @@ body{
     border-radius:15px;
 
     padding:25px;
-
-    overflow-y:auto;
 }
 
 /* ================= INTRO ================= */
@@ -357,7 +365,7 @@ h1{
     border-radius:15px;
 }
 
-/* ================= REVIEW SCROLL ================= */
+/* ================= REVIEW ================= */
 
 #review-list{
     overflow-y:auto;
@@ -391,15 +399,6 @@ h1{
 
 @media (max-width:600px){
 
-    html,
-    body{
-        width:100%;
-        min-height:100%;
-
-        overflow-x:hidden;
-        overflow-y:auto;
-    }
-
     body{
         padding:0;
 
@@ -415,8 +414,6 @@ h1{
         border-radius:0;
 
         padding:8px;
-
-        overflow-y:auto;
     }
 
     #game-container{
@@ -543,4 +540,17 @@ h1{
         padding:18px;
     }
 
+}
+
+/* ================= OCULTAR SCROLL ================= */
+
+html,
+body{
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar{
+    display:none;
 }
