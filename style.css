@@ -40,7 +40,7 @@ body{
 
 #game-wrapper{
     width:95%;
-    max-width:1000px;
+    max-width:1100px;
     height:95vh;
 
     background:rgba(10,15,25,0.95);
@@ -51,7 +51,7 @@ body{
 
     border-radius:15px;
 
-    padding:25px;
+    padding:20px;
 
     overflow:hidden;
 
@@ -88,6 +88,7 @@ h1{
     text-align:center;
 
     margin:10px 0;
+    font-size:2rem;
 }
 
 /* ================= HUD ================= */
@@ -102,10 +103,11 @@ h1{
 .stat-box{
     background:#050a14;
     border:1px solid var(--neon-blue);
-    padding:10px;
+    padding:12px;
     border-radius:8px;
     flex:1;
     text-align:center;
+    font-size:1rem;
 }
 
 /* ================= TIMER ================= */
@@ -169,7 +171,7 @@ h1{
 
     width:100%;
 
-    max-width:800px;
+    max-width:900px;
 
     margin:0 auto;
 }
@@ -299,15 +301,15 @@ h1{
 /* ================= AHORCADO ================= */
 
 #hangman-svg{
-    width:160px;
-    height:160px;
+    width:170px;
+    height:170px;
 
     filter:drop-shadow(0 0 10px var(--neon-blue));
 }
 
 .hangman-word{
 
-    font-size:1.8rem;
+    font-size:2rem;
 
     letter-spacing:6px;
 
@@ -330,13 +332,13 @@ h1{
 
     justify-content:center;
 
-    max-width:550px;
+    max-width:700px;
 }
 
 .key-btn{
 
-    width:38px;
-    height:38px;
+    width:42px;
+    height:42px;
 
     background:#0a111a;
 
@@ -468,31 +470,33 @@ h1{
     }
 
     #stage-title{
-        font-size:0.9rem;
-        margin:5px 0 8px 0;
+        font-size:0.85rem;
+        margin:4px 0 6px 0;
     }
 
     .hud{
         flex-direction:column;
-        gap:3px;
-        margin-bottom:5px;
+        gap:2px;
+        margin-bottom:4px;
     }
 
     .stat-box{
-        padding:5px;
-        font-size:0.7rem;
+        padding:4px;
+        font-size:0.65rem;
     }
 
     #timer-bar{
-        height:5px;
-        margin-bottom:8px;
+        height:4px;
+        margin-bottom:6px;
     }
+
+    /* ===== CEL PERFECTO 5x4 ===== */
 
     .memorama-grid{
 
         grid-template-columns:repeat(4,1fr) !important;
 
-        gap:4px;
+        gap:3px;
 
         width:100%;
 
@@ -505,9 +509,9 @@ h1{
 
     .card-front{
 
-        font-size:0.42rem;
+        font-size:0.38rem;
 
-        padding:2px;
+        padding:1px;
     }
 
     .neon-btn{
