@@ -2,41 +2,56 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BELINDA CORE: PROTOCOLO QUÍMICO</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <div id="game-wrapper">
-        <section id="intro-screen">
-            <h1 class="glitch">BELINDA CORE</h1>
-            <p style="color: #666;">SISTEMA DE SEGURIDAD ATMOSFÉRICA v2.0</p>
-            <div style="margin: 40px 0; font-family: monospace; color: var(--neon-green);">
-                > ETAPA 1: RECONOCIMIENTO DE PARTÍCULAS (3 PTS)<br>
-                > ETAPA 2: NEUTRALIZACIÓN DE GASES (3 PTS)<br>
-                > ETAPA 3: PROTOCOLO DE FILTRADO (4 PTS)
-            </div>
-            <button class="neon-btn" onclick="game.start()">ACCEDER AL NÚCLEO</button>
-        </section>
 
-        <section id="game-ui" class="hidden">
+    <div id="game-wrapper">
+        <div id="intro-screen">
+            <h1 class="glitch">BELINDA CORE</h1>
+            <div class="info-box">
+                <h2 class="progression-title">Progresión 14.</h2>
+                <p class="progression-desc">
+                    La ciencia como un esfuerzo humano para el bienestar, parte 4. 
+                    La química del aire ¿Cómo mejorar lo que respiramos?
+                </p>
+            </div>
+            <button class="neon-btn" onclick="game.start()">INICIAR PROTOCOLO</button>
+        </div>
+
+        <div id="game-ui" class="hidden">
             <div class="hud">
-                <div class="stat-box">AGENTE: <span style="color:white">BELINDA</span></div>
-                <div class="stat-box">SCORE: <span id="score">0</span>/10</div>
-                <div class="stat-box">TIEMPO: <span id="time-text">60</span>s</div>
+                <div class="stat-box">ESTADO: <span style="color:white">OPERATIVO</span></div>
+                <div class="stat-box">ACIERTOS: <span id="score" style="color:white">0</span></div>
+                <div class="stat-box">TIEMPO: <span id="time-text" style="color:white">0s</span></div>
             </div>
             <div id="timer-bar"><div id="timer-fill"></div></div>
-            <h2 id="stage-title" style="color: var(--neon-green); text-align:center; margin: 20px 0;"></h2>
+            <h2 id="stage-title" style="color: var(--neon-blue); text-align: center;"></h2>
             <div id="game-container"></div>
-        </section>
-
-        <div id="overlay" class="hidden">
-            <div class="modal">
-                <h2 id="modal-title"></h2>
-                <p id="modal-text" style="margin: 20px 0;"></p>
-                <button class="neon-btn" onclick="game.nextStage()">CONTINUAR</button>
-            </div>
         </div>
     </div>
+
+    <div id="overlay" class="hidden">
+        <div class="modal">
+            <h2 id="modal-title"></h2>
+            <p id="modal-text"></p>
+            <button class="neon-btn" onclick="game.nextStage()">CONTINUAR</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Protocolo Offline: Activado'))
+                    .catch(err => console.log('Error de registro:', err));
+            });
+        }
+    </script>
 </body>
 </html>
