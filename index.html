@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>BELINDA CORE: PROTOCOLO QUÍMICO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-wrapper">
+        <section id="intro-screen">
+            <h1 class="glitch">BELINDA CORE</h1>
+            <p style="color: #666;">SISTEMA DE SEGURIDAD ATMOSFÉRICA v2.0</p>
+            <div style="margin: 40px 0; font-family: monospace; color: var(--neon-green);">
+                > ETAPA 1: RECONOCIMIENTO DE PARTÍCULAS (3 PTS)<br>
+                > ETAPA 2: NEUTRALIZACIÓN DE GASES (3 PTS)<br>
+                > ETAPA 3: PROTOCOLO DE FILTRADO (4 PTS)
+            </div>
+            <button class="neon-btn" onclick="game.start()">ACCEDER AL NÚCLEO</button>
+        </section>
+
+        <section id="game-ui" class="hidden">
+            <div class="hud">
+                <div class="stat-box">AGENTE: <span style="color:white">BELINDA</span></div>
+                <div class="stat-box">SCORE: <span id="score">0</span>/10</div>
+                <div class="stat-box">TIEMPO: <span id="time-text">60</span>s</div>
+            </div>
+            <div id="timer-bar"><div id="timer-fill"></div></div>
+            <h2 id="stage-title" style="color: var(--neon-green); text-align:center; margin: 20px 0;"></h2>
+            <div id="game-container"></div>
+        </section>
+
+        <div id="overlay" class="hidden">
+            <div class="modal">
+                <h2 id="modal-title"></h2>
+                <p id="modal-text" style="margin: 20px 0;"></p>
+                <button class="neon-btn" onclick="game.nextStage()">CONTINUAR</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

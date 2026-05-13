@@ -1,0 +1,201 @@
+/* VARIABLES DE DISEÑO PRO */
+:root {
+    --neon-blue: #00f2fe;
+    --neon-green: #39ff14;
+    --neon-red: #ff3131;
+    --bg-black: #02050a;
+    --card-size: 150px; /* Tamaño ajustado para evitar que se peguen */
+}
+
+body {
+    background-color: var(--bg-black);
+    color: white;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#game-wrapper {
+    width: 95%;
+    max-width: 1100px;
+    background: rgba(10, 15, 25, 0.95);
+    border: 3px solid var(--neon-blue);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+}
+
+/* PORTADA Y TITULOS */
+#intro-screen { text-align: center; padding: 50px; }
+h1 { 
+    font-size: 4rem; 
+    margin: 0; 
+    color: var(--neon-blue); 
+    text-shadow: 0 0 20px var(--neon-blue); 
+    letter-spacing: 5px; 
+}
+
+.neon-btn {
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    padding: 20px 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.4s;
+    margin-top: 30px;
+    box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+.neon-btn:hover {
+    background: var(--neon-blue);
+    color: black;
+    box-shadow: 0 0 40px var(--neon-blue);
+}
+
+/* HUD / PANEL SUPERIOR */
+.hud { 
+    display: flex; 
+    justify-content: space-between; 
+    border-bottom: 2px solid #1a2a3a; 
+    padding-bottom: 10px; 
+    margin-bottom: 20px; 
+}
+
+.stat-box { font-size: 1.2rem; color: var(--neon-blue); font-weight: bold; }
+
+#timer-bar { 
+    width: 100%; 
+    height: 10px; 
+    background: #111; 
+    border-radius: 5px; 
+    overflow: hidden; 
+    margin: 10px 0 20px 0; 
+}
+
+#timer-fill { 
+    height: 100%; 
+    width: 100%; 
+    background: var(--neon-blue); 
+    box-shadow: 0 0 15px var(--neon-blue);
+    transition: 1s linear; 
+}
+
+/* --- SECCIÓN CORREGIDA: MEMORAMA ESPACIADO --- */
+#game-container { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 35px; /* Espacio amplio para que no se peguen las cartas */
+    padding: 20px; 
+}
+
+.card { 
+    width: var(--card-size); 
+    height: var(--card-size); 
+    cursor: pointer; 
+    perspective: 1000px; 
+}
+
+.card-inner { 
+    position: relative; 
+    width: 100%; 
+    height: 100%; 
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+    transform-style: preserve-3d; 
+}
+
+.card.flipped .card-inner { transform: rotateY(180deg); }
+
+.card-front, .card-back {
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    backface-visibility: hidden;
+    border-radius: 12px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    border: 2px solid var(--neon-blue); 
+    text-align: center; 
+    padding: 15px; 
+    box-sizing: border-box;
+}
+
+.card-back { 
+    background: radial-gradient(circle, #001a2e, #000); 
+    font-size: 3.5rem; 
+    color: var(--neon-blue); 
+    box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.3);
+}
+
+.card-front { 
+    background: #050a14; 
+    transform: rotateY(180deg); 
+    color: white; 
+    border-color: var(--neon-green); 
+    font-size: 1rem; 
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+/* AHORCADO VISUAL */
+#hangman-svg { 
+    width: 250px; 
+    height: 300px; 
+    filter: drop-shadow(0 0 10px var(--neon-blue));
+}
+
+.hang-path { stroke: var(--neon-blue); stroke-width: 5; fill: none; stroke-linecap: round; transition: 0.5s; }
+#gas-cloud { fill: var(--neon-green); opacity: 0; transition: 1.5s ease; }
+.dead-eyes { display: none; stroke: var(--neon-red); stroke-width: 3; }
+
+.letter-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 30px; }
+
+.key-btn { 
+    width: 55px; 
+    height: 55px; 
+    background: #0a111a; 
+    border: 1px solid var(--neon-blue); 
+    color: var(--neon-blue); 
+    cursor: pointer; 
+    font-size: 1.3rem; 
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.key-btn:hover:not(:disabled) { 
+    background: var(--neon-blue); 
+    color: black; 
+    box-shadow: 0 0 20px var(--neon-blue); 
+}
+
+.key-btn:disabled { opacity: 0.2; cursor: not-allowed; }
+
+/* OVERLAYS Y MODALES */
+.hidden { display: none !important; }
+
+#overlay { 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.9); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 1000; 
+}
+
+.modal { 
+    border: 3px solid var(--neon-blue); 
+    padding: 50px; 
+    text-align: center; 
+    background: #000; 
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 242, 254, 0.4);
+}
