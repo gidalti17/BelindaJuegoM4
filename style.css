@@ -16,7 +16,7 @@ body{
     margin:0;
     padding:0;
     width:100%;
-    height:100%;
+    min-height:100%;
     overflow-x:hidden;
 }
 
@@ -384,7 +384,7 @@ h1{
     html,
     body{
         width:100%;
-        height:100%;
+        min-height:100%;
 
         overflow-x:hidden;
         overflow-y:auto;
@@ -392,6 +392,7 @@ h1{
 
     body{
         padding:0;
+
         align-items:flex-start;
     }
 
@@ -403,45 +404,49 @@ h1{
 
         border-radius:0;
 
-        padding:4px;
+        padding:6px;
 
-        overflow-y:auto;
+        overflow-y:visible;
     }
 
     #game-container{
-        flex:1;
+
+        width:100%;
 
         display:flex;
+        flex-direction:column;
 
-        justify-content:flex-start;
         align-items:center;
+        justify-content:flex-start;
+
+        min-height:auto;
     }
 
-    /* ===== MEMORAMA CELULAR ===== */
+    /* ===== MEMORAMA ===== */
 
     .memorama-grid{
 
-        /* 4 columnas x 5 filas */
-
         grid-template-columns:repeat(4,1fr) !important;
 
-        gap:3px;
+        gap:4px;
 
         width:100%;
 
         max-width:100%;
 
-        margin-bottom:10px;
+        margin:0 auto 10px auto;
     }
 
     .card{
+
         width:100%;
+
         aspect-ratio:1/1;
     }
 
     .card-front{
 
-        font-size:0.36rem;
+        font-size:0.38rem;
 
         padding:2px;
 
@@ -454,59 +459,59 @@ h1{
     }
 
     .progression-title{
-        font-size:0.8rem;
+        font-size:0.85rem;
     }
 
     .progression-desc{
-        font-size:0.62rem;
-        line-height:1.1;
+        font-size:0.65rem;
+        line-height:1.2;
     }
 
     #stage-title{
         font-size:0.8rem;
-        margin:2px 0 4px 0;
+        margin:4px 0;
     }
 
     .hud{
         flex-direction:column;
-        gap:2px;
-        margin-bottom:3px;
+        gap:3px;
+        margin-bottom:4px;
     }
 
     .stat-box{
-        padding:3px;
-        font-size:0.6rem;
+        padding:4px;
+        font-size:0.65rem;
     }
 
     #timer-bar{
         height:4px;
-        margin-bottom:4px;
+        margin-bottom:5px;
     }
 
     .neon-btn{
 
         width:100%;
 
-        max-width:180px;
+        max-width:190px;
 
-        font-size:0.7rem;
+        font-size:0.72rem;
 
-        padding:6px;
+        padding:7px;
 
         margin:4px;
     }
 
     .hangman-word{
 
-        font-size:0.9rem;
+        font-size:1rem;
 
         letter-spacing:2px;
     }
 
     #hangman-svg{
 
-        width:75px;
-        height:75px;
+        width:80px;
+        height:80px;
     }
 
     .letter-grid{
@@ -526,10 +531,6 @@ h1{
         width:90%;
 
         padding:15px;
-    }
-
-    #game-container{
-        min-height:auto;
     }
 
 }
