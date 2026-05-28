@@ -21,15 +21,15 @@ const game = {
     ],
 
     ahorcadoWords: [
-        "ATMOSFERA",
-        "NITROGENO",
-        "OXIGENO",
-        "MONOXIDO",
-        "PARTICULAS",
-        "OZONO",
-        "FOTOQUIMICO",
-        "CATALIZADOR",
-        "EFECTO"
+    { palabra:"ATMOSFERA", pista:"Capa de gases que rodea la Tierra" },
+    { palabra:"NITROGENO", pista:"Gas más abundante del aire" },
+    { palabra:"OXIGENO", pista:"Gas necesario para respirar" },
+    { palabra:"MONOXIDO", pista:"Gas tóxico producido por combustión" },
+    { palabra:"PARTICULAS", pista:"PM2.5 son muy peligrosas" },
+    { palabra:"OZONO", pista:"Contaminante secundario" },
+    { palabra:"FOTOQUIMICO", pista:"Tipo de smog causado por luz solar" },
+    { palabra:"CATALIZADOR", pista:"Reduce gases tóxicos en autos" },
+    { palabra:"EFECTO", pista:"Consecuencia o resultado ambiental" }
     ],
     ahorcadoIndex: 0,
 
@@ -164,7 +164,7 @@ const game = {
         container.className = 'memorama-grid';
         document.getElementById('stage-title').innerText = "ETAPA 1: MEMORIA ATMOSFÉRICA";
 
-        this.startTimer(120, () => {
+        this.startTimer(200, () => {
             this.showModal("TIEMPO AGOTADO", "El protocolo de memoria ha expirado. Avanzando...", () => this.nextStage());
         });
 
@@ -225,6 +225,8 @@ const game = {
             else this.showModal("FASE FINALIZADA", "Avanzando al siguiente protocolo.", () => this.nextStage());
         });
 
+        const actual = this.ahorcadoWords[this.ahorcadoIndex];
+        const word = actual.palabra;
         container.innerHTML = `
             <svg id="hangman-svg" viewBox="0 0 200 250">
                 <path d="M20 230 L180 230 M50 230 L50 20 L130 20 L130 50" stroke="var(--neon-blue)" stroke-width="5" fill="none" />
@@ -236,10 +238,15 @@ const game = {
                 <line id="h-legR" class="hang-path hidden" x1="130" y1="170" x2="160" y2="210" stroke="white" stroke-width="5" />
             </svg>
             <div id="word-display" class="hangman-word"></div>
+
+            <p style="color:var(--neon-green); text-align:center; margin-top:10px;">
+            Pista: ${actual.pista}
+            </p>
+
             <div id="keyboard" class="letter-grid"></div>
         `;
 
-        const word = this.ahorcadoWords[this.ahorcadoIndex];
+        
         let guessed = [word[0], word[word.length - 1]];
         let fails = 0;
         const parts = ['h-head', 'h-body', 'h-armL', 'h-armR', 'h-legL', 'h-legR'];
